@@ -107,112 +107,22 @@ margin-bottom:40px;
 color:#38bdf8;
 }
 
-/* ABOUT PAGE */
+/* ABOUT */
 
-.about-page{
-padding:100px 10%;
+.about-container{
+display:flex;
+flex-direction:column;
+align-items:center;
 text-align:center;
-position:relative;
-overflow:hidden;
-}
-
-/* FLOATING BACKGROUND ANIMATION */
-
-.about-page::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:radial-gradient(circle,#38bdf8,transparent);
-top:-200px;
-left:-200px;
-opacity:0.2;
-animation:float 8s infinite alternate;
-}
-
-.about-page::after{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#0ea5e9,transparent);
-bottom:-200px;
-right:-200px;
-opacity:0.2;
-animation:float 10s infinite alternate;
-}
-
-@keyframes float{
-from{transform:translateY(0);}
-to{transform:translateY(40px);}
-}
-
-
-/* TITLE */
-
-.about-title{
-font-size:45px;
-margin-bottom:20px;
-background:linear-gradient(90deg,#38bdf8,#0ea5e9);
--webkit-background-clip:text;
-color:transparent;
-}
-
-
-/* DESCRIPTION */
-
-.about-description{
-max-width:800px;
+max-width:700px;
 margin:auto;
-font-size:18px;
-line-height:1.8;
+}
+
+.about-text{
 color:#cbd5f5;
-margin-bottom:60px;
+line-height:1.7;
 }
 
-.about-description span{
-color:#38bdf8;
-font-weight:600;
-}
-
-
-/* CARDS */
-
-.about-cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-perspective:1000px;
-}
-
-
-/* 3D CARD */
-
-.about-card{
-background:#1e293b;
-padding:30px;
-border-radius:15px;
-transition:transform 0.6s;
-transform-style:preserve-3d;
-cursor:pointer;
-}
-
-.about-card h3{
-color:#38bdf8;
-margin-bottom:10px;
-}
-
-.about-card p{
-color:#cbd5f5;
-}
-
-
-/* 3D HOVER EFFECT */
-
-.about-card:hover{
-transform:rotateY(10deg) rotateX(5deg) scale(1.05);
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
 /* SKILLS */
 
 .skills-container{

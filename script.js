@@ -1,19 +1,54 @@
-const text = "AI Developer | Python Programmer | ML Enthusiast";
+const roles = [
+"AI Enthusiast",
+"Machine Learning Learner",
+"Software Developer"
+];
 
-let index = 0;
+let roleIndex = 0;
+let charIndex = 0;
 
-function typing(){
+function typeEffect(){
 
-document.querySelector(".typing").textContent = text.slice(0,index);
+const element = document.querySelector(".typing");
 
-index++;
+if(charIndex < roles[roleIndex].length){
 
-if(index <= text.length){
+element.textContent += roles[roleIndex].charAt(charIndex);
+charIndex++;
 
-setTimeout(typing,80);
+setTimeout(typeEffect,100);
+
+}else{
+
+setTimeout(eraseEffect,2000);
 
 }
 
 }
 
-typing();
+function eraseEffect(){
+
+const element = document.querySelector(".typing");
+
+if(charIndex > 0){
+
+element.textContent = roles[roleIndex].substring(0,charIndex-1);
+charIndex--;
+
+setTimeout(eraseEffect,50);
+
+}else{
+
+roleIndex++;
+
+if(roleIndex >= roles.length){
+roleIndex = 0;
+}
+
+setTimeout(typeEffect,500);
+
+}
+
+}
+
+typeEffect();

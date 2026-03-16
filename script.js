@@ -4,11 +4,13 @@ let index = 0;
 
 function typing(){
 
-document.querySelector(".typing").textContent = text.slice(0,index++);
+document.querySelector(".typing").textContent = text.slice(0,index);
+
+index++;
 
 if(index <= text.length){
 
-setTimeout(typing,100);
+setTimeout(typing,80);
 
 }
 

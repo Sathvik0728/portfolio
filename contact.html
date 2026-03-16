@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contact | Banda Sathvik</title>
+
 <link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
@@ -30,17 +33,62 @@
 </header>
 
 
-<section>
+<section class="contact-page">
 
-<h2>Contact</h2>
+<h1 class="contact-title">Get In Touch</h1>
 
-<p>Email: bandasathvik0@gmail.com</p>
+<p class="contact-subtitle">
+Feel free to contact me for collaboration or opportunities
+</p>
 
-<p>Phone: +91 9381585125</p>
+<div class="contact-container">
 
-<p>Location: Hyderabad</p>
+<!-- CONTACT INFO -->
+
+<div class="contact-info">
+
+<h3>Email</h3>
+<p>bandasathvik0@gmail.com</p>
+
+<h3>Phone</h3>
+<p>+91 9381585125</p>
+
+<h3>Location</h3>
+<p>Hyderabad, India</p>
+
+</div>
+
+
+<!-- CONTACT FORM -->
+
+<form action="https://formsubmit.co/bandasathvik0@gmail.com" method="POST" class="contact-form">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+<input type="hidden" name="_captcha" value="false">
+
+<input type="hidden" name="_next" value="thankyou.html">
+
+<input type="hidden" name="_subject" value="New Portfolio Contact Message">
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
 
 </section>
+
+
+<footer>
+
+<p>© 2026 Banda Sathvik Portfolio</p>
+
+</footer>
 
 </body>
 </html>

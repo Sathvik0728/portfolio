@@ -81,18 +81,19 @@ Feel free to contact me for collaboration or opportunities
 </footer>
 
 
-<!-- EmailJS SCRIPT -->
+<!-- EmailJS -->
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
 
-(function(){
-emailjs.init("lt9lTbDsWS8XxXpDd");
-})();
+document.addEventListener("DOMContentLoaded", function(){
 
-document.getElementById("contact-form")
-.addEventListener("submit", function(e){
+emailjs.init("lt9lTbDsWS8XxXpDd");
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function(e){
 
 e.preventDefault();
 
@@ -100,15 +101,19 @@ emailjs.sendForm(
 "service_iu3xbar",
 "template_kfhapzl",
 this
-).then(function(){
+)
+.then(function(){
 
 alert("Message Sent Successfully!");
+form.reset();
 
-document.getElementById("contact-form").reset();
+})
+.catch(function(error){
 
-}, function(error){
-
+console.error("EmailJS Error:", error);
 alert("Failed to send message.");
+
+});
 
 });
 

@@ -59,19 +59,13 @@ Feel free to contact me for collaboration or opportunities
 
 <!-- CONTACT FORM -->
 
-<form action="https://formsubmit.co/bandasathvik0@gmail.com" method="POST" class="contact-form">
+<form id="contact-form" class="contact-form">
 
 <input type="text" name="name" placeholder="Your Name" required>
 
 <input type="email" name="email" placeholder="Your Email" required>
 
 <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-<!-- FormSubmit settings -->
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New message from Banda Sathvik Portfolio">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="thankyou.html">
 
 <button type="submit">Send Message</button>
 
@@ -85,6 +79,42 @@ Feel free to contact me for collaboration or opportunities
 <footer>
 <p>© 2026 Banda Sathvik Portfolio</p>
 </footer>
+
+
+<!-- EmailJS SCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+
+(function(){
+emailjs.init("lt9lTbDsWS8XxXpDd");
+})();
+
+document.getElementById("contact-form")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+emailjs.sendForm(
+"service_iu3xbar",
+"template_kfhapzl",
+this
+).then(function(){
+
+alert("Message Sent Successfully!");
+
+document.getElementById("contact-form").reset();
+
+}, function(error){
+
+alert("Failed to send message.");
+
+});
+
+});
+
+</script>
 
 </body>
 </html>

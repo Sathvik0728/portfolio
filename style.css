@@ -303,3 +303,72 @@ color:#94a3b8;
 margin-top:40px;
 }
 
+/* ABOUT PAGE STYLE */
+
+.about-page{
+padding:100px 12%;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+text-align:center;
+min-height:100vh;
+}
+
+/* TITLE */
+
+.about-title{
+font-size:45px;
+margin-bottom:25px;
+color:#38bdf8;
+letter-spacing:1px;
+}
+
+/* DESCRIPTION */
+
+.about-description{
+max-width:800px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#cbd5f5;
+margin-bottom:60px;
+}
+
+/* CARDS GRID */
+
+.about-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+}
+
+/* GLASS CARD */
+
+.about-card{
+padding:35px;
+border-radius:16px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.08);
+transition:all 0.35s ease;
+cursor:pointer;
+}
+
+/* CARD TEXT */
+
+.about-card h3{
+margin-bottom:12px;
+color:#38bdf8;
+font-size:20px;
+}
+
+.about-card p{
+color:#cbd5f5;
+line-height:1.6;
+}
+
+/* HOVER EFFECT */
+
+.about-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 15px 40px rgba(56,189,248,0.25);
+background:rgba(255,255,255,0.08);
+}

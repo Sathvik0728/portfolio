@@ -51,4 +51,5 @@ setTimeout(typeEffect,500);
 
 }
 
+
 typeEffect();

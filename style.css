@@ -893,3 +893,90 @@ flex-direction:column;
 max-width:1400px;
 }
 }
+
+/* BIG SCREEN FIX */
+
+@media (min-width: 1024px){
+
+.hero-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:60px;
+}
+
+.hero-left{
+flex:1;
+}
+
+.hero-right{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+/* ABOUT */
+
+.about-container{
+display:flex;
+gap:40px;
+align-items:center;
+}
+
+.about-text{
+flex:1;
+}
+
+.about-cards{
+flex:1;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+/* SKILLS */
+
+.skills-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+/* PROJECTS */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+/* CONTACT */
+
+.contact-container{
+display:flex;
+justify-content:space-between;
+gap:40px;
+}
+
+}
+section{
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:60px 0;
+}
+@media (min-width:1024px){
+
+h1{
+font-size:42px;
+}
+
+h2{
+font-size:28px;
+}
+
+p{
+font-size:18px;
+}
+
+}

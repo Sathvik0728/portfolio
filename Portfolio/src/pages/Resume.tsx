@@ -4,11 +4,11 @@ import { Printer, ArrowLeft, Github, Linkedin, Mail } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { projects } from '../data/projects'
 import { skills } from '../data/skills'
-import { certificates } from '../data/certificates'
+import { certificates, CERT_BASE } from '../data/certificates'
 
 const topProjects = projects.filter(p => p.featured)
 
-const certs = certificates.filter(c => c.featured).map(c => c.title)
+const certs = certificates.filter(c => c.featured).map(c => ({ title: c.title, url: `${CERT_BASE}/${encodeURIComponent(c.filename)}` }))
 
 export default function Resume() {
   useEffect(() => {
@@ -119,7 +119,11 @@ export default function Resume() {
                 {topProjects.map(p => (
                   <div key={p.title} className="p-4 rounded-xl bg-white/[0.025] border border-white/[0.07] hover:border-cyan-500/20 hover:bg-white/[0.04] transition-all duration-200 group">
                     <div className="flex items-start justify-between gap-2 mb-1.5">
-                      <h3 className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug">{p.title}</h3>
+                      {p.github ? (
+                        <a href={p.github} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug hover:underline">{p.title}</a>
+                      ) : (
+                        <h3 className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug">{p.title}</h3>
+                      )}
                       {p.github && (
                         <a href={p.github} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} GitHub repository`} className="text-white/20 hover:text-white transition-colors shrink-0 mt-0.5">
                           <Github size={13} />
@@ -143,8 +147,9 @@ export default function Resume() {
               </h2>
               <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
                 {certs.map(c => (
-                  <li key={c} className="flex items-start gap-2 text-sm text-white/55">
-                    <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span> {c}
+                  <li key={c.title} className="flex items-start gap-2 text-sm text-white/55">
+                    <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span>
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
                   </li>
                 ))}
               </ul>
@@ -183,15 +188,17 @@ export default function Resume() {
               .print-resume .project-desc { font-size: 10pt; color: #444; margin: 2px 0 9px 0; line-height: 1.5; }
               .print-resume .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 24px; }
               .print-resume .cert-item { font-size: 10pt; color: #444; }
+              .print-resume a { color: #0b5fff; text-decoration: underline; }
+              .print-resume .project-title.print-link { color: #0b5fff; }
             `}</style>
 
             <div className="print-resume">
               <h1>Sathvik Banda</h1>
               <p className="subtitle">AI &amp; ML Engineer</p>
               <div className="contact-row">
-                <span>bandasathvik0@gmail.com</span>
-                <span>github.com/Sathvik0728</span>
-                <span>linkedin.com/in/banda-sathvik</span>
+                <a href="mailto:bandasathvik0@gmail.com">bandasathvik0@gmail.com</a>
+                <a href="https://github.com/Sathvik0728" target="_blank" rel="noopener noreferrer">github.com/Sathvik0728</a>
+                <a href="https://www.linkedin.com/in/banda-sathvik/" target="_blank" rel="noopener noreferrer">linkedin.com/in/banda-sathvik</a>
               </div>
 
               <p className="section-heading">Summary</p>
@@ -219,7 +226,11 @@ export default function Resume() {
               <p className="section-heading">Key Projects</p>
               {topProjects.map(p => (
                 <div key={p.title}>
-                  <span className="project-title">{p.title}</span>
+                  {p.github ? (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-title print-link">{p.title}</a>
+                  ) : (
+                    <span className="project-title">{p.title}</span>
+                  )}
                   <span className="project-tech">— {p.tags.join(', ')}</span>
                   <p className="project-desc">{p.description}</p>
                 </div>
@@ -228,7 +239,9 @@ export default function Resume() {
               <p className="section-heading">Certifications &amp; Achievements</p>
               <div className="cert-grid">
                 {certs.map(c => (
-                  <p key={c} className="cert-item">• {c}</p>
+                  <p key={c.title} className="cert-item">
+                    • <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a>
+                  </p>
                 ))}
               </div>
             </div>

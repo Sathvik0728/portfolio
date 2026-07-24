@@ -11,7 +11,19 @@ const topProjects = resumeProjectTitles
   .map(title => projects.find(p => p.title === title))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
 
-const certs = certificates.filter(c => c.featured).map(c => ({ title: c.title, url: `${CERT_BASE}/${encodeURIComponent(c.filename)}` }))
+const resumeCertOrder = [
+  'Fundamentals of Machine Learning and Artificial Intelligence',
+  'Prompt Design in Vertex AI Skill Badge',
+  'Fundamentals of Generative AI',
+  'Cyber Job Simulation',
+  'SIH Internal Hackathon Certificate',
+  'AI Workshop Certificate',
+  'Data Visualisation',
+]
+const certs = resumeCertOrder
+  .map(title => certificates.find(c => c.title === title))
+  .filter((c): c is (typeof certificates)[number] => Boolean(c))
+  .map(c => ({ title: c.title, issuer: c.issuer, url: `${CERT_BASE}/${encodeURIComponent(c.filename)}` }))
 
 export default function Resume() {
   useEffect(() => {
@@ -148,11 +160,14 @@ export default function Resume() {
                 <span className="w-1 h-4 bg-cyan-400 rounded-full" />
                 Certifications &amp; Achievements
               </h2>
-              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+              <ul className="flex flex-col gap-2">
                 {certs.map(c => (
                   <li key={c.title} className="flex items-start gap-2 text-sm text-white/55">
                     <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span>
-                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
+                    <span>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
+                      <span className="text-white/30"> — {c.issuer}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -173,23 +188,23 @@ export default function Resume() {
                 font-family: 'Calibri', 'Arial', sans-serif;
                 font-size: 11.5pt;
                 color: #111;
-                line-height: 1.65;
+                line-height: 1.6;
               }
               .print-resume h1 { font-size: 25pt; font-weight: 700; color: #0a0a0a; margin: 0 0 4px 0; letter-spacing: -0.3px; }
-              .print-resume .subtitle { font-size: 12.5pt; color: #444; margin-bottom: 8px; }
-              .print-resume .contact-row { font-size: 10.5pt; color: #555; display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 13px; padding-bottom: 11px; border-bottom: 1.5px solid #1a1a2e; }
-              .print-resume .summary { font-size: 11pt; color: #333; line-height: 1.7; margin-bottom: 3px; }
-              .print-resume .section-heading { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #1a1a2e; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin: 15px 0 9px 0; }
+              .print-resume .subtitle { font-size: 12.5pt; color: #444; margin-bottom: 7px; }
+              .print-resume .contact-row { font-size: 10.5pt; color: #555; display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 11px; padding-bottom: 9px; border-bottom: 1.5px solid #1a1a2e; }
+              .print-resume .summary { font-size: 11pt; color: #333; line-height: 1.6; margin-bottom: 2px; }
+              .print-resume .section-heading { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #1a1a2e; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin: 13px 0 7px 0; }
               .print-resume .edu-row { display: flex; justify-content: space-between; align-items: baseline; }
               .print-resume .edu-name { font-weight: 600; font-size: 11.5pt; }
               .print-resume .edu-college { color: #555; font-size: 10.5pt; }
               .print-resume .edu-date { font-size: 10.5pt; color: #555; }
-              .print-resume .skill-row { margin-bottom: 6px; font-size: 10.5pt; }
+              .print-resume .skill-row { margin-bottom: 4px; font-size: 10.5pt; }
               .print-resume .skill-label { font-weight: 700; color: #1a1a2e; }
               .print-resume .project-title { font-weight: 700; font-size: 11pt; color: #0a0a0a; }
               .print-resume .project-tech { font-size: 9.5pt; color: #777; margin-left: 6px; }
-              .print-resume .project-desc { font-size: 10.5pt; color: #444; margin: 2px 0 10px 0; line-height: 1.5; }
-              .print-resume .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+              .print-resume .project-desc { font-size: 10.5pt; color: #444; margin: 2px 0 7px 0; line-height: 1.45; }
+              .print-resume .cert-list { display: flex; flex-direction: column; gap: 4px; }
               .print-resume .cert-item { font-size: 10.5pt; color: #444; }
               .print-resume a { color: inherit; text-decoration: none; }
             `}</style>
@@ -239,10 +254,10 @@ export default function Resume() {
               ))}
 
               <p className="section-heading">Certifications &amp; Achievements</p>
-              <div className="cert-grid">
+              <div className="cert-list">
                 {certs.map(c => (
                   <p key={c.title} className="cert-item">
-                    • <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a>
+                    • <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a> - {c.issuer}
                   </p>
                 ))}
               </div>

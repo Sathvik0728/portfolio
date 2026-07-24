@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Printer, ArrowLeft, Github, Linkedin, Mail } from 'lucide-react'
+import { Printer, ArrowLeft, Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { projects } from '../data/projects'
 import { skills } from '../data/skills'
@@ -135,7 +135,10 @@ export default function Resume() {
                   <div key={p.title} className="p-4 rounded-xl bg-white/[0.025] border border-white/[0.07] hover:border-cyan-500/20 hover:bg-white/[0.04] transition-all duration-200 group">
                     <div className="flex items-start justify-between gap-2 mb-1.5">
                       {p.github ? (
-                        <a href={p.github} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug hover:underline">{p.title}</a>
+                        <a href={p.github} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug hover:underline flex items-center gap-1">
+                          {p.title}
+                          <ExternalLink size={11} className="shrink-0 opacity-60" />
+                        </a>
                       ) : (
                         <h3 className="font-heading font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors leading-snug">{p.title}</h3>
                       )}
@@ -165,7 +168,10 @@ export default function Resume() {
                   <li key={c.title} className="flex items-start justify-between gap-4 text-sm">
                     <span className="flex items-start gap-2">
                       <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span>
-                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-white/70 font-medium hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-white/70 font-medium hover:text-cyan-400 hover:underline transition-colors flex items-center gap-1">
+                        {c.title}
+                        <ExternalLink size={10} className="shrink-0 opacity-60" />
+                      </a>
                     </span>
                     <span className="text-white/35 text-xs shrink-0 mt-0.5">{c.issuer}</span>
                   </li>
@@ -246,7 +252,9 @@ export default function Resume() {
               {topProjects.map(p => (
                 <div key={p.title}>
                   {p.github ? (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-title">{p.title}</a>
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-title">
+                      {p.title} <ExternalLink size={10} style={{ display: 'inline', verticalAlign: 'middle' }} />
+                    </a>
                   ) : (
                     <span className="project-title">{p.title}</span>
                   )}
@@ -259,7 +267,7 @@ export default function Resume() {
               <div className="cert-list">
                 {certs.map(c => (
                   <div key={c.title} className="cert-row">
-                    <span className="cert-item">• <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a></span>
+                    <span className="cert-item">• <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title} <ExternalLink size={9} style={{ display: 'inline', verticalAlign: 'middle' }} /></a></span>
                     <span className="cert-issuer">{c.issuer}</span>
                   </div>
                 ))}

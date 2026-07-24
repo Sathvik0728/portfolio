@@ -6,7 +6,10 @@ import { projects } from '../data/projects'
 import { skills } from '../data/skills'
 import { certificates, CERT_BASE } from '../data/certificates'
 
-const topProjects = projects.filter(p => p.featured && p.title !== 'SMS Spam Detector' && p.title !== 'AI Language Translator')
+const resumeProjectTitles = ['Sign Language Detection', 'Face Emotion Recognition', 'Air Pollution Predictor', 'PoseAI Pro']
+const topProjects = resumeProjectTitles
+  .map(title => projects.find(p => p.title === title))
+  .filter((p): p is (typeof projects)[number] => Boolean(p))
 
 const certs = certificates.filter(c => c.featured).map(c => ({ title: c.title, url: `${CERT_BASE}/${encodeURIComponent(c.filename)}` }))
 
@@ -160,7 +163,7 @@ export default function Resume() {
           <div className="hidden print:block">
             <style>{`
               @media print {
-                @page { size: A4; margin: 11mm 15mm; }
+                @page { size: A4; margin: 14mm 17mm; }
                 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
                 body { background: white !important; }
                 nav, .no-print { display: none !important; }
@@ -168,26 +171,26 @@ export default function Resume() {
               }
               .print-resume {
                 font-family: 'Calibri', 'Arial', sans-serif;
-                font-size: 11pt;
+                font-size: 11.5pt;
                 color: #111;
-                line-height: 1.6;
+                line-height: 1.65;
               }
-              .print-resume h1 { font-size: 23pt; font-weight: 700; color: #0a0a0a; margin: 0 0 3px 0; letter-spacing: -0.3px; }
-              .print-resume .subtitle { font-size: 12pt; color: #444; margin-bottom: 6px; }
-              .print-resume .contact-row { font-size: 10pt; color: #555; display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1.5px solid #1a1a2e; }
-              .print-resume .summary { font-size: 10.5pt; color: #333; line-height: 1.6; margin-bottom: 2px; }
-              .print-resume .section-heading { font-size: 9.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #1a1a2e; border-bottom: 1px solid #ccc; padding-bottom: 3px; margin: 14px 0 7px 0; }
+              .print-resume h1 { font-size: 25pt; font-weight: 700; color: #0a0a0a; margin: 0 0 4px 0; letter-spacing: -0.3px; }
+              .print-resume .subtitle { font-size: 12.5pt; color: #444; margin-bottom: 8px; }
+              .print-resume .contact-row { font-size: 10.5pt; color: #555; display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 13px; padding-bottom: 11px; border-bottom: 1.5px solid #1a1a2e; }
+              .print-resume .summary { font-size: 11pt; color: #333; line-height: 1.7; margin-bottom: 3px; }
+              .print-resume .section-heading { font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #1a1a2e; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin: 15px 0 9px 0; }
               .print-resume .edu-row { display: flex; justify-content: space-between; align-items: baseline; }
-              .print-resume .edu-name { font-weight: 600; font-size: 11pt; }
-              .print-resume .edu-college { color: #555; font-size: 10pt; }
-              .print-resume .edu-date { font-size: 10pt; color: #555; }
-              .print-resume .skill-row { margin-bottom: 4px; font-size: 10pt; }
+              .print-resume .edu-name { font-weight: 600; font-size: 11.5pt; }
+              .print-resume .edu-college { color: #555; font-size: 10.5pt; }
+              .print-resume .edu-date { font-size: 10.5pt; color: #555; }
+              .print-resume .skill-row { margin-bottom: 6px; font-size: 10.5pt; }
               .print-resume .skill-label { font-weight: 700; color: #1a1a2e; }
-              .print-resume .project-title { font-weight: 700; font-size: 10.5pt; color: #0a0a0a; }
-              .print-resume .project-tech { font-size: 9pt; color: #777; margin-left: 6px; }
-              .print-resume .project-desc { font-size: 10pt; color: #444; margin: 2px 0 9px 0; line-height: 1.5; }
-              .print-resume .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 24px; }
-              .print-resume .cert-item { font-size: 10pt; color: #444; }
+              .print-resume .project-title { font-weight: 700; font-size: 11pt; color: #0a0a0a; }
+              .print-resume .project-tech { font-size: 9.5pt; color: #777; margin-left: 6px; }
+              .print-resume .project-desc { font-size: 10.5pt; color: #444; margin: 2px 0 10px 0; line-height: 1.5; }
+              .print-resume .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+              .print-resume .cert-item { font-size: 10.5pt; color: #444; }
               .print-resume a { color: inherit; text-decoration: none; }
             `}</style>
 

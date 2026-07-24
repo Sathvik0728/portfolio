@@ -188,8 +188,7 @@ export default function Resume() {
               .print-resume .project-desc { font-size: 10pt; color: #444; margin: 2px 0 9px 0; line-height: 1.5; }
               .print-resume .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 24px; }
               .print-resume .cert-item { font-size: 10pt; color: #444; }
-              .print-resume a { color: #0b5fff; text-decoration: underline; }
-              .print-resume .project-title.print-link { color: #0b5fff; }
+              .print-resume a { color: inherit; text-decoration: none; }
             `}</style>
 
             <div className="print-resume">
@@ -227,7 +226,7 @@ export default function Resume() {
               {topProjects.map(p => (
                 <div key={p.title}>
                   {p.github ? (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-title print-link">{p.title}</a>
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-title">{p.title}</a>
                   ) : (
                     <span className="project-title">{p.title}</span>
                   )}

@@ -160,14 +160,14 @@ export default function Resume() {
                 <span className="w-1 h-4 bg-cyan-400 rounded-full" />
                 Certifications &amp; Achievements
               </h2>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2.5">
                 {certs.map(c => (
-                  <li key={c.title} className="flex items-start gap-2 text-sm text-white/55">
-                    <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span>
-                    <span>
-                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
-                      <span className="text-white/30"> — {c.issuer}</span>
+                  <li key={c.title} className="flex items-start justify-between gap-4 text-sm">
+                    <span className="flex items-start gap-2">
+                      <span className="text-cyan-400/70 mt-0.5 text-xs shrink-0">▸</span>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-white/70 font-medium hover:text-cyan-400 hover:underline transition-colors">{c.title}</a>
                     </span>
+                    <span className="text-white/35 text-xs shrink-0 mt-0.5">{c.issuer}</span>
                   </li>
                 ))}
               </ul>
@@ -205,7 +205,9 @@ export default function Resume() {
               .print-resume .project-tech { font-size: 9.5pt; color: #777; margin-left: 6px; }
               .print-resume .project-desc { font-size: 10.5pt; color: #444; margin: 2px 0 7px 0; line-height: 1.45; }
               .print-resume .cert-list { display: flex; flex-direction: column; gap: 4px; }
+              .print-resume .cert-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
               .print-resume .cert-item { font-size: 10.5pt; color: #444; }
+              .print-resume .cert-issuer { font-size: 9.5pt; color: #777; white-space: nowrap; }
               .print-resume a { color: inherit; text-decoration: none; }
             `}</style>
 
@@ -256,9 +258,10 @@ export default function Resume() {
               <p className="section-heading">Certifications &amp; Achievements</p>
               <div className="cert-list">
                 {certs.map(c => (
-                  <p key={c.title} className="cert-item">
-                    • <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a> - {c.issuer}
-                  </p>
+                  <div key={c.title} className="cert-row">
+                    <span className="cert-item">• <a href={c.url} target="_blank" rel="noopener noreferrer">{c.title}</a></span>
+                    <span className="cert-issuer">{c.issuer}</span>
+                  </div>
                 ))}
               </div>
             </div>

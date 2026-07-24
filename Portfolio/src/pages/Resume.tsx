@@ -6,7 +6,7 @@ import { projects } from '../data/projects'
 import { skills } from '../data/skills'
 import { certificates, CERT_BASE } from '../data/certificates'
 
-const topProjects = projects.filter(p => p.featured)
+const topProjects = projects.filter(p => p.featured && p.title !== 'SMS Spam Detector' && p.title !== 'AI Language Translator')
 
 const certs = certificates.filter(c => c.featured).map(c => ({ title: c.title, url: `${CERT_BASE}/${encodeURIComponent(c.filename)}` }))
 

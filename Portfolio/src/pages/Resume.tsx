@@ -100,7 +100,7 @@ export default function Resume() {
                   <h3 className="text-white font-semibold text-sm">B.Tech — Computer Science &amp; Engineering (AI &amp; ML)</h3>
                   <p className="text-white/40 text-sm mt-0.5">Malla Reddy College of Engineering And Technology</p>
                   <p className="text-cyan-400 text-sm font-medium mt-1">
-                     CGPA: 7.66 / 10
+                     CGPA: 7.66
                   </p>
 
                 </div>
@@ -241,7 +241,7 @@ export default function Resume() {
                   <p className="edu-name">B.Tech — Computer Science &amp; Engineering (AI &amp; ML)</p>
                   <p className="edu-college">Malla Reddy College of Engineering And Technology</p>
                         <p className="text-cyan-400 text-sm font-medium mt-1">
-                          CGPA: 7.66 / 10
+                          CGPA: 7.66 
                         </p>
                 
                 </div>

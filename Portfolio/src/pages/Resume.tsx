@@ -240,6 +240,10 @@ export default function Resume() {
                 <div>
                   <p className="edu-name">B.Tech — Computer Science &amp; Engineering (AI &amp; ML)</p>
                   <p className="edu-college">Malla Reddy College of Engineering And Technology</p>
+                        <p className="text-cyan-400 text-sm font-medium mt-1">
+                          CGPA: 7.66 / 10
+                        </p>
+                
                 </div>
                 <span className="edu-date">2023 – 2027</span>
               </div>
